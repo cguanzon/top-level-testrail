@@ -1,4 +1,5 @@
 'use strict';
+var q = require('q');
 var env = require('./env.js');
 var request = require('request');
 var express = require('express');
@@ -25,6 +26,7 @@ var getProjects = function(req, res){
 };
 
 var getProjectsWithOpenMilestones = function(req, res) {
+    var deferred = q.defer();
     request.get(testrailUrl + '/get_projects',
         {
             headers: {
@@ -44,7 +46,6 @@ var getProjectsWithOpenMilestones = function(req, res) {
                     };
             });
             console.log(projectIdArray)
-            //implement Q here
             var promiseArray = projectArray.map(function(project){
                 return request.get(testrailUrl + '/get_milestones/' + project.project_id + '&is_completed=0',
                     {
@@ -62,11 +63,10 @@ var getProjectsWithOpenMilestones = function(req, res) {
                 );
             });
 
-
-
-
         }
     );
+
+    res.json(deferred.promise);
 }
 app.get('/projects', getProjectsWithOpenMilestones);
 
