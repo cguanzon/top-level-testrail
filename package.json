@@ -1,0 +1,23 @@
+{
+  "name": "top-level-testrail",
+  "version": "0.0.0",
+  "description": "top-level-testrail ==================",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cguanzon/top-level-testrail.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cguanzon/top-level-testrail/issues"
+  },
+  "homepage": "https://github.com/cguanzon/top-level-testrail",
+  "dependencies": {
+    "express": "^4.9.8",
+    "request": "^2.45.0"
+  }
+}
